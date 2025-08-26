@@ -67,7 +67,7 @@ export default function Home() {
 
   function UserCreation(id: string | number) {
     if(typeof id === "number"){
-      
+
     }else{
        id.toUpperCase
     }
@@ -85,6 +85,16 @@ export default function Home() {
   useEffect(() => {
     setMarks()
   },[])
+
+
+  // Enumerations 
+  enum SeatType {
+    VIP = "vip for vp",
+    Premium = "premium",
+    First = 1,
+  }
+  const vipseat = SeatType.VIP
+  console.log("This is vip",vipseat)
 
 
 
@@ -132,7 +142,13 @@ export default function Home() {
         }
       </div>
 
-      {/* */}
+      {/* Enums*/}
+      <div>
+        <h1>Enums</h1>
+        <div>{vipseat}</div>
+        <div>{SeatType.First}</div>
+        <div>{SeatType.Premium}</div>
+      </div>
     </div>
 
   );
