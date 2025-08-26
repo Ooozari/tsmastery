@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Home() {
   type User = {
@@ -10,6 +10,12 @@ export default function Home() {
   }
   const [user, setUser] = useState<User | null>(null)
   const [show, setShow] = useState<boolean>(false)
+  const [showMarks, setShowMarks] = useState<boolean>(false)
+  const [studentMarks, setstudentMarks] = useState<number[]>([])
+
+
+
+
 
   function createUser(user: User): void {
     setUser(user);
@@ -51,6 +57,20 @@ export default function Home() {
 
 
 
+  // ARRAYS
+
+
+  const setMarks = () => {
+    const marks: number[] = [10, 21, 4, 2, 52, 2, 2, 24, 24, 1];
+    setstudentMarks((prev) => [...prev, ...marks])
+
+  }
+  useEffect(() => {
+    setMarks()
+  },[])
+
+
+
   return (
     <div className="font-sans flex flex-col min-h-screen p-8 pb-20 gap-8 sm:p-20">
       <h1>TypeScipt Mastery | TS</h1>
@@ -64,12 +84,34 @@ export default function Home() {
 
       </div>
 
+
+      {/* Union Interstion of types aliases */}
       <div>
         <h1>Union Interstion of types aliases</h1>
         <button onClick={() => setShow(!show)}>Show Sergon details</button>
         {show && <div>
           {JSON.stringify(sergon1)}
         </div>
+        }
+      </div>
+
+      {/* Arrays */}
+      <div>
+        <h1>Arrays</h1>
+        <button onClick={() => {
+
+          setShowMarks(!showMarks)
+        }}>showMarks</button>
+        {showMarks ? (<div>
+          {
+            studentMarks.map((mark, index) => (
+              <div key={index}>
+                {mark}
+              </div>
+            ))
+          }
+        </div>) : (
+      <p>No marks available</p>)
         }
       </div>
 
