@@ -12,6 +12,11 @@ export default function Home() {
   const [show, setShow] = useState<boolean>(false)
   const [showMarks, setShowMarks] = useState<boolean>(false)
   const [studentMarks, setstudentMarks] = useState<number[]>([])
+  const [arrayOfArrays, setarrayOfArrays] = useState<number[][]>([[]])
+  type MyObject = {
+    name: string
+  }
+  const [arrayOfObjects, setarrayOfObjects] = useState<MyObject[]>([])
 
 
 
