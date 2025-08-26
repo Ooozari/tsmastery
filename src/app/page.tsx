@@ -60,7 +60,19 @@ export default function Home() {
 
   }
 
+  let seatAllotment: "1" | true | 3
 
+  seatAllotment = 3
+  // seatAllotment = false
+
+  function UserCreation(id: string | number) {
+    if(typeof id === "number"){
+      
+    }else{
+       id.toUpperCase
+    }
+   
+  }
 
   // ARRAYS
 
@@ -120,6 +132,7 @@ export default function Home() {
         }
       </div>
 
+      {/* */}
     </div>
 
   );
