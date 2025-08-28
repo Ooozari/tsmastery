@@ -66,12 +66,12 @@ export default function Home() {
   // seatAllotment = false
 
   function UserCreation(id: string | number) {
-    if(typeof id === "number"){
+    if (typeof id === "number") {
 
-    }else{
-       id.toUpperCase
+    } else {
+      id.toUpperCase
     }
-   
+
   }
 
   // ARRAYS
@@ -84,7 +84,7 @@ export default function Home() {
   }
   useEffect(() => {
     setMarks()
-  },[])
+  }, [])
 
 
   // Enumerations 
@@ -94,7 +94,63 @@ export default function Home() {
     First = 1,
   }
   const vipseat = SeatType.VIP
-  console.log("This is vip",vipseat)
+  console.log("This is vip", vipseat)
+
+  // Classes
+
+  class USer {
+    protected _balance: number = 1000;
+    Email: string;
+    Name: string;
+
+    constructor(email: string, name: string) {
+      this.Email = email;
+      this.Name = name;
+    }
+
+    getUserDetails(): void {
+      console.log("Email =", this.Email)
+      console.log("Name =", this.Name)
+      console.log("Balance =", this._balance)
+    }
+
+    get getUserEmail(): string {
+      return this.Email
+    }
+    set setUserEmail(email:string) {
+      this.Email = email
+    }
+
+
+
+  }
+
+  class Admin extends USer {
+        changeUserBalance(){
+          this._balance = 10000;
+        }
+        showBalance(){
+    console.log("Balance of admin",this._balance); 
+  }
+  }
+
+  const User1 = new USer("uzair@gmail.com","Uzair")
+  User1.getUserDetails();
+  let emaill:string = "umair@gmail.com"
+  User1.setUserEmail=emaill;
+
+  const admin = new Admin("uzair@gmail.com","Uzair")
+
+  // Not allowed as it is protected
+  // admin._balance
+  admin.getUserDetails()
+  admin.changeUserBalance()
+  admin.showBalance()
+
+
+
+
+
 
 
 
@@ -138,7 +194,7 @@ export default function Home() {
             ))
           }
         </div>) : (
-      <p>No marks available</p>)
+          <p>No marks available</p>)
         }
       </div>
 
@@ -148,6 +204,12 @@ export default function Home() {
         <div>{vipseat}</div>
         <div>{SeatType.First}</div>
         <div>{SeatType.Premium}</div>
+      </div>
+
+
+      {/* classes */}
+      <div>
+        <h1>Classes</h1>
       </div>
     </div>
 
